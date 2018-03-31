@@ -1,0 +1,53 @@
+<app-header>
+  <p content>Dodawanie kontaktu</p>
+</app-header>
+
+<form [formGroup]="contactForm">
+  
+  <div class="row form-group">
+    
+    <div class="col-sm-12 col-xl-4">
+
+      <label>Nazwisko</label>
+      <input formControlName="surname" type="text" class="form-control" placeholder="Nazwisko" autofocus>
+      
+      <p *ngIf="(!this.contactForm.get('surname').valid)"
+       id="Surname" class="error">Nazwisko musi zaczynać się od wielkiej litery oraz zawierać od 3 do 15 liter</p>
+
+    </div>
+
+    <div class="col-sm-12 col-xl-4">
+
+      <label>Imię</label>
+      <input formControlName="firstName" type="text" class="form-control" placeholder="Imię">
+      
+      <p *ngIf="(!this.contactForm.get('firstName').valid)"
+       id="FirstName" class="error">Imię musi zaczynać się od wielkiej litery oraz zawierać od 3 do 15 liter</p>
+
+    </div>
+
+    <div class="col-sm-12 col-xl-4">
+
+        <label>Nr telefonu</label>
+        <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Nr telefonu">
+      
+        <p *ngIf="(!this.contactForm.get('phoneNumber').valid)"
+         id="PhoneNumber" class="error">Numer telefonu musi 9 cyfr</p>
+        
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-12">
+        
+      <button (click)="validContact()" class="btn btn-sm btn-info">Zapisz</button>
+      <button (click)="contactForm.reset()" class="btn btn-sm btn-secondary">Reset</button>
+      <button class="btn btn-sm btn-dark" [routerLink]="['/contacts']">Wstecz</button>
+      
+    </div>
+
+  </div>
+
+</form>
